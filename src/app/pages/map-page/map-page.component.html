@@ -5,7 +5,7 @@
            [mapTypeId]="mapTypeId"
            [usePanning]="true"
            (mapClick)="mapClicked($event)">
-    <agm-marker [latitude]="testLat()" [longitude]="testLon()"></agm-marker>
+
     <agm-marker
       [latitude]="currentLocationMarker.latitude"
       [longitude]="currentLocationMarker.longitude"
@@ -28,13 +28,5 @@
   </agm-map>
 
   <img (click)="goToCurrentLocation()" class="location-button" src="/assets/new-design-assets/gps-button.png"/>
-  <div class="footer">
-    <div class="location-text">{{locationName}}</div>
-    <div class="row-with-vertical-centered-items wide-report-button-container">
-      <button class="wide-report-button" (click)="completeReport()">
-        Report
-      </button>
-    </div>
 
-  </div>
 </div>
