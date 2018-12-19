@@ -1,0 +1,133 @@
+@import "./../../../styles";
+
+.google-map {
+  width: 100%;
+  height: 100%;
+  position: inherit !important;
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100px;
+  direction: rtl;
+  z-index: 1;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: rgba(237, 237, 237, 0.8);
+}
+
+.information ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+}
+
+.information li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.header > img {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  vertical-align: middle;
+  z-index: 2;
+  padding: 0.5rem;
+  position: relative;
+}
+
+.header > span {
+  font-size: 1.3rem;
+  display: inline-flex;
+  align-items: center;
+  z-index: 2;
+  width: 80%;
+  position: relative;
+  font-family: sans-serif;
+}
+
+.header .hint {
+  color: white;
+  text-shadow: 1px 1px 1px black;
+  margin-top: 2rem;
+  padding: 20px;
+  font-family: sans-serif;
+  font-size: 24px;
+}
+
+.coordinates-container {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  display: flex;
+  flex-direction: row-reverse;
+  z-index: 2;
+}
+
+.coordinates-input {
+  height: 3em;
+  border-radius: 20px;
+  border: 2px solid gray;
+  text-align: center;
+  direction: ltr;
+  width: 100px;
+  margin-bottom: auto;
+  margin-top: auto;
+}
+
+$footer-height: 130px;
+$wide-report-button-height: 73px;
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: $footer-height;
+  direction: rtl;
+  z-index: 1;
+  background-color: rgba(237, 237, 237, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.location-text {
+  height: $footer-height - $wide-report-button-height;
+  width: 100vw;
+  text-align: center;
+  font-size: 30px;
+}
+
+.location-button {
+  cursor: pointer;
+  position: fixed;
+  left: 10px;
+  bottom: $footer-height + 10px;
+}
+
+agm-map {
+  height: 100vh;
+}
+
+.wide-report-button {
+  @include wide-report-button-mixin();
+  position: absolute;
+  height: $wide-report-button-height;
+}
+
+.wide-report-button-container {
+  width: 100vw;
+  height: $wide-report-button-height;
+  justify-content: center;
+}

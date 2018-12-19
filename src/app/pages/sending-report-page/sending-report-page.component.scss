@@ -1,0 +1,157 @@
+.page-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: calc(100vh - 250px);
+}
+
+.event-type-container{
+  display: grid;
+  text-align: center;
+  font-family: matka, sans-serif;
+}
+
+.event-size-container{
+  display: flex;
+  margin-top: -15px;
+  padding-bottom: 15px;
+}
+
+@mixin event-size-3-combined{
+  width: calc(100vw / 3);
+  display: grid;
+  outline: none;
+  border: 1px solid gray;
+}
+
+.event-size-3{
+  @include event-size-3-combined();
+  background-color: transparent;
+}
+
+.event-size-3-checked{
+  @include event-size-3-combined();
+  background-color: rgba(201,201,201,0.6);
+}
+
+.event-size-2{
+  width: calc(100vw / 2);
+  background-color: transparent;
+  outline: none;
+  height:50px;
+  border:none;
+  justify-content: center;
+}
+
+.action-icon{
+  height: 26px;
+  padding-left: 5px;
+}
+
+.action-text{
+  font-size: 21px;
+}
+
+.event-size{
+  display: grid;
+}
+
+.event-size-text{
+  margin:auto;
+}
+
+@mixin event-size-global{
+  margin: auto;
+  width: 100px;
+  background-repeat: no-repeat;
+}
+
+.balloon-on-ground{
+  @include event-size-global();
+  height: 31px;
+  margin-top: 49px;
+  background-image: url(/assets/new-design-assets/balloon-on-ground.svg);
+}
+
+.balloon-low{
+  @include event-size-global();
+  background-image: url(/assets/new-design-assets/balloon.svg);
+  height: 50px;
+  margin-top: 30px;
+  width: 25px;
+}
+
+.balloon-high{
+  @include event-size-global();
+  height: 70px;
+  margin-top: 10px;
+  width: 25px;
+  background-image: url(/assets/new-design-assets/balloon.svg);
+}
+
+.kite-on-ground{
+  @include event-size-global();
+  height: 31px;
+  margin-top: 49px;
+  background-image: url(/assets/new-design-assets/kite-on-ground.svg);
+}
+
+.kite-low{
+  @include event-size-global();
+  background-image: url(/assets/new-design-assets/kite.svg);
+  height: 50px;
+  margin-top: 30px;
+  width: 40px;
+}
+
+.kite-high{
+  @include event-size-global();
+  height: 70px;
+  margin-top: 10px;
+  width: 40px;
+  background-image: url(/assets/new-design-assets/kite.svg);
+}
+
+.small-fire{
+  @include event-size-global();
+  height: 31px;
+  width: 20px;
+  margin-top: 49px;
+  background-image: url(/assets/new-design-assets/small-fire.svg);
+}
+
+.medium-fire{
+  @include event-size-global();
+  background-image: url(/assets/new-design-assets/medium-fire.svg);
+  height: 40px;
+  margin-top: 40px;
+  width: 26px;
+}
+
+.large-fire{
+  @include event-size-global();
+  height: 48px;
+  margin-top: 32px;
+  width: 55px;
+  background-image: url(/assets/new-design-assets/large-fire.svg);
+}
+
+.finish-button{
+  -webkit-box-shadow: 6px 5px 5px 0px rgba(0,0,0,0.65);
+  -moz-box-shadow: 6px 5px 5px 0px rgba(0,0,0,0.65);
+  box-shadow: 6px 5px 5px 0px rgba(0,0,0,0.65);
+  width:130px;
+  height:40px;
+  border-radius: 25px;
+  font-family: matka, sans-serif;
+  border: none;
+  background-color: #037c6d;
+  color:white;
+  font-size: 26px;
+  outline: none;
+}
+
+.sending-report-footer{
+  justify-content: center;
+  height: 170px;
+}

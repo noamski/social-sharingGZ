@@ -1,0 +1,92 @@
+
+.header {
+  width: 100%;
+  box-shadow: 0 0 10px grey;
+  height: 50px;
+}
+
+input {
+  display: block;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 0;
+}
+
+.home-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: calc(100vh - 80px);
+}
+
+
+
+@mixin report-button {
+  width: 150px;
+  height: 150px;
+  border-radius: 75px;
+  border: none;
+  font-size: 24px;
+  color: white;
+  box-shadow: 3px 3px 10px grey;
+  margin: auto; outline: none;
+}
+
+@font-face {
+  font-family: matka;
+  src: url(/assets/fonts/TsMatka-Regular.ttf);
+}
+
+.main-button{
+  background-image: url(/assets/new-design-assets/report-button-asset.svg);
+  display: block;
+  margin: 0 auto;
+  width: 250px;
+  height: 250px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  outline: none;
+  color: white;
+  font-family: matka, sans-serif;
+  font-size: 3em;
+}
+
+.main-button-text{
+  padding-top: 110px;
+}
+
+@mixin rescue-forces-buttons {
+  width: 100px;
+  height: 100px;
+  border: none;
+  cursor: pointer;
+  background: transparent no-repeat;
+  outline: none;
+}
+
+.fire-fighters-button{
+  @include rescue-forces-buttons();
+  background-image: url(/assets/new-design-assets/fire-fighters-button.svg);
+}
+
+.police-button{
+  @include rescue-forces-buttons();
+  background-image: url(/assets/new-design-assets/police-button.svg);
+}
+
+.mda-button{
+  @include rescue-forces-buttons();
+  background-image: url(/assets/new-design-assets/mda-button.svg);
+}
+
+.rescue-forces-button-container{
+  display: grid;
+  text-align: center;
+  font-family: matka, sans-serif;
+}

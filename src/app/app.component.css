@@ -1,0 +1,34 @@
+.main-container{
+  background-image: url(/assets/imageedit_1_8551196791.png);
+  background-size: cover;
+  min-height: 100vh;
+  z-index: -1;
+}
+
+.main-content {
+  margin: 30px auto 0 auto;
+  text-align: right;
+}
+
+.header {
+  width: 100%;
+  box-shadow: 0 0 10px grey;
+  height: 50px;
+  background-color: #ededed;
+  opacity: 0.8;
+}
+
+.header .system-icon{
+  background-image: url(/assets/new-design-assets/ya-logo-header.svg);
+  display: block;
+  margin: 0 auto;
+  width: 50px;
+  height: 50px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  outline: none;
+}

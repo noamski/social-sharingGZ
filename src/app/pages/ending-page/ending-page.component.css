@@ -1,0 +1,190 @@
+
+
+.header {
+    width: 100%;
+    box-shadow: 0 0 10px grey;
+    height: 50px;
+  }
+
+.share {
+  margin: 0 auto;
+  width: 20%;
+  position: absolute;
+  top: 45%;
+  right: 43%;
+}
+
+.header .icon {
+    /* display: block; */
+    margin: 0 auto;
+    width: 40px;
+    height: 40px;
+    background-image: url(/assets/colored-balloon.svg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    top: 5px;
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: #037c6d;
+    background-size: 50%;
+}
+
+.ending-page .content {
+  width: 60%;
+  min-height: 100vh;
+  margin: 30px auto 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.ending-page-main-title{
+  font-size: 4vw; font-weight: bold;
+  text-align: center;
+}
+
+@media screen and (min-width: 600px) {
+  .ending-page-main-title{
+    font-size: 45px; font-weight: bold;
+    text-align: center;
+  }
+  .phone-number {
+    font-size: 45px;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 361px) {
+  .ending-page-main-title{
+    font-size: 37px; font-weight: bold;
+    text-align: center;
+  }
+  .phone-number {
+    font-size: 37px;
+    margin: auto;
+  }
+}
+
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 360px) {
+  .ending-page-main-title{
+    font-size: 33px; font-weight: bold;
+    text-align: center;
+  }
+
+  .phone-number {
+    font-size: 33px;
+    margin: auto;
+  }
+}
+
+.url {
+    text-decoration: none
+}
+
+.url .icon {
+    background-image: url(/assets/internet.svg);
+    display: inline-block;
+    margin: 0 auto;
+    width: 55px;
+    height: 55px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    top: 20px;
+    border-radius: 50%;
+    background-size: 50%;
+}
+
+.new-icon {
+  display: inline-block;
+  margin: 0 auto;
+  width: 50px;
+  height: 50px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.row-with-vertical-centered-items{
+  display: flex; flex-direction: row; align-items: center;
+}
+
+.ending-page-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.ending-page-wrapper {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@font-face {
+  font-family: matka;
+  src: url(/assets/fonts/TsMatka-Regular.ttf);
+}
+
+.ending-page-footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 60%;
+  text-align: center;
+}
+
+.credit-logo{
+  width: 120px;
+}
+
+.unit-icon{
+   width:70px;
+ }
+
+.balloon-icon{
+  width:50px;
+}
+
+.balloon-icon-text {
+  font-family: matka, sans-serif;
+  font-size: 3em;
+}
+
+.balloon-icon-wrapper{
+  align-items: center;
+}
+
+.middle-ascetic{
+  vertical-align: sub;
+}
+
+.small-report-button {
+  width: 120px;
+  height: 120px;
+  font-size: 10px;
+  line-height: 160px;
+}
+
+.main-button-mini{
+  background-image: url(/assets/new-design-assets/report-button-asset.svg);
+  display: block;
+  margin: 0 auto;
+  width: 117px;
+  height: 117px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  outline: none;
+  color: white;
+  font-family: matka, sans-serif;
+}
+
+.main-button-mini-text{
+  padding-top: 56px;
+}

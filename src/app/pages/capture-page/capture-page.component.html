@@ -1,0 +1,20 @@
+<div class="capture-page">
+
+  <!-- <div class="index-video-wrapper" *ngIf="!imageBase64">
+    <video #video autoplay id="index-video"></video>
+  </div>
+  -->
+  <div class="index-image-wrapper" *ngIf="imageBase64">
+    <img [src]="imageBase64">
+  </div>
+  <label class="file-container">
+    <!-- <input type="file" (change)="onSelectFile($event)" accept="image/*,video/*"/> -->
+    <input type="button" (click)="goBack()">
+  </label>
+
+  <div class="footer">
+    <input [(ngModel)]="description" placeholder="הוסף הערה... (רק אם בא לך)" />
+    <button (click)="goToMapScreen()"></button>
+  </div>
+
+</div>

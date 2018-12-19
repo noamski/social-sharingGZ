@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col-1"></div>
+  <div class="col-10 page-column">
+    <div class="column-item">
+      <h3 class="subtitle">הגורם המאיים</h3>
+      <div class="factor-icons radio-group">
+
+        <div class="factor-icon fire">
+          <div (click)="chooseCategory(CATEGORIES_NAMES.FIRE)" class="icon select-circle radio selected"></div>
+          <span>{{CATEGORIES_NAMES.FIRE}}</span>
+        </div>
+
+        <div class="factor-icon balloon">
+          <div (click)="chooseCategory(CATEGORIES_NAMES.BALLOON)" class="icon select-circle radio"></div>
+          <span>{{CATEGORIES_NAMES.BALLOON}}</span>
+        </div>
+
+        <div class="factor-icon kite">
+          <div (click)="chooseCategory(CATEGORIES_NAMES.KITE)" class="icon select-circle radio"></div>
+          <span>{{CATEGORIES_NAMES.KITE}}</span>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="column-item" [hidden]="currCategoryName !== CATEGORIES_NAMES.FIRE">
+      <h3 class="subtitle">גודל השרפה</h3>
+      <div class="buttons radio-group">
+        <button class="radio-3" (click)="chooseBurningSize(BURNING_SIZES.SMALL)">{{BURNING_SIZES.SMALL}}</button>
+        <button class="radio-3" (click)="chooseBurningSize(BURNING_SIZES.MEDIUM)">{{BURNING_SIZES.MEDIUM}}</button>
+        <button class="radio-3" (click)="chooseBurningSize(BURNING_SIZES.LARGE)">{{BURNING_SIZES.LARGE}}</button>
+      </div>
+    </div>
+
+    <div class="column-item" [hidden]="currCategoryName === CATEGORIES_NAMES.FIRE">
+      <h3 class="subtitle">גובה מוערך</h3>
+      <div class="buttons radio-group">
+        <button class="radio-4" (click)="chooseFlyingObjectHeight(FLYING_OBJECTS_HEIGHT.ON_GROUND)">
+          {{FLYING_OBJECTS_HEIGHT.ON_GROUND}}
+        </button>
+        <button class="radio-4" (click)="chooseFlyingObjectHeight(FLYING_OBJECTS_HEIGHT.LOW)">
+          {{FLYING_OBJECTS_HEIGHT.LOW}}
+        </button>
+        <button class="radio-4" (click)="chooseFlyingObjectHeight(FLYING_OBJECTS_HEIGHT.MEDIUM)">
+          {{FLYING_OBJECTS_HEIGHT.MEDIUM}}
+        </button>
+        <button class="radio-4" (click)="chooseFlyingObjectHeight(FLYING_OBJECTS_HEIGHT.HIGH)">
+          {{FLYING_OBJECTS_HEIGHT.HIGH}}
+        </button>
+      </div>
+    </div>
+
+    <div class="row-with-vertical-centered-items comment">
+      <button class="load-location-button" (click)="openMap()"></button>
+      <button class="load-image-button" (click)="cameraButtonClicked()"></button>
+      <input [(ngModel)]="description" class="comment-input"/>
+    </div>
+    <input id="file" type="file" style="display: none;" accept="image/*" capture="environment" (change)="captureImage($event)">
+
+    <div class="btn-group column-item" role="group" aria-label="Basic example">
+      <button class="finish-button" (click)="goToEndingPage()" [disabled]="!canReportBeSent()">שלח</button>
+    </div>
+
+  </div>
+</div>

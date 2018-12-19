@@ -1,0 +1,12 @@
+.textarea-style {
+    width: 90vw;
+    height: calc(100vh - 183px);
+}
+
+.add-comment-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: calc(100vh - 80px);
+}
