@@ -1,0 +1,23 @@
+<div *ngIf="users" class = "userlist">
+  <div class="headline">Online</div>
+  <div class="list-items">
+    <div class="list-item" *ngFor="let user of users">
+      <img mat-card-image class="img" src={{user.profile_image}} class="resources-icon" onerror="this.onerror=null; this.src='/assets/userplaceholder.png';">
+      {{user.name}}
+    </div>
+  </div>
+  <!--<ul role="list" class="footer" aria-orientation="vertical">-->
+    <!--<li alt="left" role="listitem" *ngFor="let user of users" class="footer" tabindex="0" id="b1ad443c-7870-4fc2-b6de-c816a13ea9a0">-->
+      <!--<span class="mdc-list-item__graphic">-->
+        <!--<img mat-card-image class="img" src={{user.profile_image}} class="resources-icon" onerror="this.onerror=null; this.src='/assets/userplaceholder.png';">-->
+      <!--</span>-->
+      <!--<span class="mdc-list-item__text">-->
+        <!--<span class="mdc-list-item__primary-text">{{user.name}}</span>-->
+        <!--&lt;!&ndash;<span class="mdc-list-item__secondary-text">Secondary text</span>&ndash;&gt;-->
+      <!--</span>-->
+    <!--</li>-->
+  <!--</ul>-->
+</div>
+
+
+<a href="https://material.io/components/web/catalog/lists/" role="listitem" class="mdc-list-item mdc-ripple-upgraded" target="_blank"></a>

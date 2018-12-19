@@ -1,91 +1,25 @@
 <div class="page-column">
-  <div class="event-type-container" [hidden]="eventType !== EVENT_TYPE_BUTTON.KITE">
-    <button class="kite-checked"></button>
-    <h1>עפיפון</h1>
-  </div>
-  <div class="event-type-container" [hidden]="eventType !== EVENT_TYPE_BUTTON.FIRE">
-    <button class="fire-checked"></button>
-    <h1>שריפה</h1>
-  </div>
-
-  <div class="event-type-container" [hidden]="eventType !== EVENT_TYPE_BUTTON.BALLOON">
-    <button class="balloon-checked"></button>
-    <h1>בלון</h1>
-  </div>
-
-  <div class="event-size-container" [hidden]="eventType !== EVENT_TYPE_BUTTON.BALLOON">
-    <button class="event-size-3" (click)="setEventSize(KITE_HEIGHTS.ON_GROUND)"
-            [ngClass]="eventSize === BALLOON_HEIGHTS.ON_GROUND?'event-size-3-checked':'event-size-3'">
-      <div class="balloon-on-ground"></div>
-      <h5 class="event-size-text">על הקרקע</h5>
-    </button>
-    <button class="event-size-3" (click)="setEventSize(KITE_HEIGHTS.LOW)"
-            [ngClass]="eventSize === BALLOON_HEIGHTS.LOW?'event-size-3-checked':'event-size-3'">
-      <div class="balloon-low"></div>
-      <h5 class="event-size-text">נמוך</h5>
-    </button>
-    <button class="event-size-3" (click)="setEventSize(KITE_HEIGHTS.HIGH)"
-            [ngClass]="eventSize === BALLOON_HEIGHTS.HIGH?'event-size-3-checked':'event-size-3'">
-      <div class="balloon-high"></div>
-      <h5 class="event-size-text">גבוה</h5>
-    </button>
-  </div>
-
-  <div class="event-size-container" [hidden]="eventType !== EVENT_TYPE_BUTTON.KITE">
-    <button class="event-size-3" (click)="setEventSize(BALLOON_HEIGHTS.ON_GROUND)"
-            [ngClass]="eventSize === BALLOON_HEIGHTS.ON_GROUND?'event-size-3-checked':'event-size-3'">
-      <div class="kite-on-ground"></div>
-      <h5 class="event-size-text">על הקרקע</h5>
-    </button>
-    <button class="event-size-3" (click)="setEventSize(BALLOON_HEIGHTS.LOW)"
-            [ngClass]="eventSize === BALLOON_HEIGHTS.LOW?'event-size-3-checked':'event-size-3'">
-      <div class="kite-low"></div>
-      <h5 class="event-size-text">נמוך</h5>
-    </button>
-    <button class="event-size-3" (click)="setEventSize(BALLOON_HEIGHTS.HIGH)"
-            [ngClass]="eventSize === BALLOON_HEIGHTS.HIGH?'event-size-3-checked':'event-size-3'">
-      <div class="kite-high"></div>
-      <h5 class="event-size-text">גבוה</h5>
-    </button>
-  </div>
-
-  <div class="event-size-container" [hidden]="eventType !== EVENT_TYPE_BUTTON.FIRE">
-    <button class="event-size-3" (click)="setEventSize(FIRE_SIZES.SMALL)"
-            [ngClass]="eventSize === FIRE_SIZES.SMALL?'event-size-3-checked':'event-size-3'">
-      <div class="small-fire"></div>
-      <h5 class="event-size-text">קטנה</h5>
-    </button>
-    <button class="event-size-3" (click)="setEventSize(FIRE_SIZES.MEDIUM)"
-            [ngClass]="eventSize === FIRE_SIZES.MEDIUM?'event-size-3-checked':'event-size-3'">
-      <div class="medium-fire"></div>
-      <h5 class="event-size-text">בינונית</h5>
-    </button>
-    <button class="event-size-3" (click)="setEventSize(FIRE_SIZES.LARGE)"
-            [ngClass]="eventSize === FIRE_SIZES.LARGE?'event-size-3-checked':'event-size-3'">
-      <div class="large-fire"></div>
-      <h5 class="event-size-text">גדולה</h5>
-    </button>
-  </div>
-
-  <div class="row-with-vertical-centered-items">
-    <button style="border-left: 1px solid gray;"
-            [disabled]="true"
-            class="event-size-2 row-with-vertical-centered-items"
-            (click)="cameraButtonClicked()">
-      <img src="/assets/new-design-assets/camera-icon.svg" class="action-icon" alt="">
-      <span class="action-text">הוספת תמונה</span>
-    </button>
-    <input id="file" type="file" style="display: none;" accept="image/*" capture="environment" (change)="captureImage($event)">
-    <button class="event-size-2 row-with-vertical-centered-items"
-    (click)="addComment()">
-      <img src="/assets/new-design-assets/write-note.svg" class="action-icon" alt="">
-      <span class="action-text">הוספת הערה</span>
-    </button>
-  </div>
+  <!--<div class="main-footer-container">-->
+      <!--<div class="actions-container">-->
+        <button
+                class="flex-item event-size-2 row-with-vertical-centered-items"
+                (click)="cameraButtonClicked()">
+          <img src="/assets/new-design-assets/camera-icon.svg" class="action-icon" alt="">
+        </button>
+      <!--
+      <input id="file" type="file" style="display: none;" accept="image/*" capture="environment" (change)="captureImage($event)">
+      -->
+        <button class="flex-item event-size-2 row-with-vertical-centered-items"
+                (click)="addComment()">
+          <img src="/assets/new-design-assets/write-note.svg" class="action-icon" alt="">
+        </button>
+      <!--</div>-->
+    <app-userlist-page class="flex-item"></app-userlist-page>
+  <!--</div>-->
 
 </div>
 <div class="row-with-vertical-centered-items sending-report-footer">
   <button class="finish-button" (click)="sendReportAndGoToEndingPage()">
-    סיימתי
+    Done
   </button>
 </div>

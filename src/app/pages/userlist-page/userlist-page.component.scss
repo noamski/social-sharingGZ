@@ -1,0 +1,50 @@
+.mdc-list-item__primary-text {
+  font-size: larger;
+  color: #0c5460;
+}
+.headline {
+  text-align: center;
+  color: #28a745;
+}
+.list-items {
+  list-style: none;
+  margin-left: 1em;
+  counter-reset: line;
+  display:flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  li {
+    position: relative;
+    margin-bottom: 1.5em;
+    position: absolute;
+    left: -2.25em;
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    margin-right: 0.5em;
+    background-color: #B53C2C;
+    border-radius: 50%;
+    color: #fff;
+    text-align:center;
+    line-height: 1.25em;
+    counter-increment: line;
+    direction: ltr;
+    content: counter(line);
+  }
+
+  .list-item {
+    direction: ltr;
+  }
+}
+
+.resources-icon {
+  height:25px;
+  width: 25px;
+  image-resolution: 300dpi;
+}
+
+.mat-list-item-content {
+  height: 25px;
+}
+

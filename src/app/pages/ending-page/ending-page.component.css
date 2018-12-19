@@ -1,5 +1,3 @@
-
-
 .header {
     width: 100%;
     box-shadow: 0 0 10px grey;
@@ -31,7 +29,7 @@
 }
 
 .ending-page .content {
-  width: 60%;
+  width: 50%;
   min-height: 100vh;
   margin: 30px auto 0 auto;
   text-align: center;
@@ -141,7 +139,7 @@
 }
 
 .unit-icon{
-   width:70px;
+   width:200px;
  }
 
 .balloon-icon{

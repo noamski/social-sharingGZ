@@ -82,32 +82,32 @@ body {
 
 .kite{
 @include event-type-button();
-  background-image: url(/assets/new-design-assets/kite-disabled.svg);
+  background-image: url(/assets/new-design-assets/bug-disabled.png);
 }
 
 .kite-checked{
 @include event-type-button();
-  background-image: url(/assets/new-design-assets/kite-enabled.svg);
+  background-image: url(/assets/new-design-assets/bug-enabled.png);
 }
 
 .fire{
 @include event-type-button();
-  background-image: url(/assets/new-design-assets/fire-disabled.svg);
+  background-image: url(/assets/new-design-assets/mashroom-disabled.png);
 }
 
 .fire-checked{
 @include event-type-button();
-  background-image: url(/assets/new-design-assets/fire-enabled.svg);
+  background-image: url(/assets/new-design-assets/mashroom-enabled.png);
 }
 
 .balloon{
 @include event-type-button();
-  background-image: url(/assets/new-design-assets/balloon-disabled.svg);
+  background-image: url(/assets/new-design-assets/virus-disabled.png);
 }
 
 .balloon-checked{
 @include event-type-button();
-  background-image: url(/assets/new-design-assets/balloon-enabled.svg);
+  background-image: url(/assets/new-design-assets/virus-enabled.png);
 }
 
 @font-face {

@@ -12,6 +12,7 @@ import {EVENT_TYPES} from '../../constants/EVENT_TYPES';
 import {Subscription} from 'rxjs/internal/Subscription';
 import {Location} from '../../models/Location';
 import {ROLES} from '../../constants/ROLES';
+import {Report} from '../../models/Report';
 
 declare var google: any;
 
@@ -34,6 +35,7 @@ export class MapPageComponent implements OnInit {
   currentLocationSubscription:Subscription;
   event:Location = new Location(null,null);
   map: any;
+  reports: Report[] = [new Report(32.0001, 32.333, 'bug'), new Report(32.0045, 32.333, 'mashroom'), new Report(32.0001, 32.553, 'virus'), new Report(32.0551, 32.333, 'bug')];
 
   EVENT_TYPE_BUTTON = EVENT_TYPES;
 
@@ -129,16 +131,11 @@ export class MapPageComponent implements OnInit {
   }
 
   mapClicked($event: MouseEvent) {
-    this.setSelectedLocation($event['coords']['lat'], $event['coords']['lng']);
+    // this.setSelectedLocation($event['coords']['lat'], $event['coords']['lng']);
     this.getClosestPolitical();
   }
 
-  setSelectedLocation(latitude: number, longitude: number) {
-    let marker = new Marker();
-    marker.latitude = Number(latitude.toFixed(6));
-    marker.longitude = Number(longitude.toFixed(6));
-    this.selectedLocationMarker = marker;
-  }
+
 
   isSelectedLocationValid() {
     return !isNullOrUndefined(this.selectedLocationMarker.latitude) && !isNullOrUndefined(this.selectedLocationMarker.longitude);
@@ -236,16 +233,16 @@ export class MapPageComponent implements OnInit {
   }
 
   getMarkerIconByEventType() {
-    switch (this.eventType) {
-      case this.EVENT_TYPE_BUTTON.BALLOON:
-        return 'assets/new-design-assets/balloon-pointer.png';
-      case this.EVENT_TYPE_BUTTON.FIRE:
-        return 'assets/new-design-assets/fire-pointer.png';
-      case this.EVENT_TYPE_BUTTON.KITE:
-        return 'assets/new-design-assets/kite-pointer.png';
-      default:
-        return 'assets/new-design-assets/fire-pointer.png';
-    }
+    // switch (this.eventType) {
+    //   case this.EVENT_TYPE_BUTTON.BALLOON:
+    //     return '/assets/new-design-assets/virus-enabled.png';
+    //   case this.EVENT_TYPE_BUTTON.FIRE:
+    //     return '/assets/new-design-assets/mashroom-enabled.png';
+    //   case this.EVENT_TYPE_BUTTON.KITE:
+    //     return '/assets/new-design-assets/bug-enabled.png';
+    //   default:
+    //     return '/assets/new-design-assets/bug-enabled.png';
+    // }
   }
 
   isReportValid(){

@@ -1,4 +1,5 @@
- import { Request, Response, Router } from "express";
+import {Request, Response, Router} from "express";
+import {getOnlineUsers} from "../services/user.service";
 
 const userRouter: Router = Router();
 
@@ -31,4 +32,13 @@ userRouter.get("/", (request: Request, response: Response) => {
   response.json(user);
 });
 
-export { userRouter };
+userRouter.post("/online", (request: Request, response: Response) => {
+  getOnlineUsers(request, response)
+    .then((data) => {
+      response.send(data);
+
+    }).catch((error) => {
+    response.status(500).send("ERROR!");
+  });
+});
+export {userRouter};

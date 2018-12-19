@@ -1,11 +1,13 @@
 <div class="map-page">
   <div class="header row-with-vertical-centered-items">
+
     <button class="kite" style="outline: none;" (click)="changeEventType(EVENT_TYPE_BUTTON.KITE)"
             [ngClass]="eventType === EVENT_TYPE_BUTTON.KITE?'kite-checked':'kite'"></button>
     <button class="fire" style="outline: none;" (click)="changeEventType(EVENT_TYPE_BUTTON.FIRE)"
             [ngClass]="eventType === EVENT_TYPE_BUTTON.FIRE?'fire-checked':'fire'"></button>
     <button class="balloon" style="outline: none;" (click)="changeEventType(EVENT_TYPE_BUTTON.BALLOON)"
             [ngClass]="eventType === EVENT_TYPE_BUTTON.BALLOON?'balloon-checked':'balloon'"></button>
+    <div style="margin-left: 10%"><h3>:Filter by</h3></div>
   </div>
   <agm-map [latitude]="currentLocation.latitude" [longitude]="currentLocation.longitude" [zoom]="zoom"
            [zoomControl]="false"
@@ -39,7 +41,7 @@
     <div class="location-text">{{locationName}}</div>
     <div class="row-with-vertical-centered-items wide-report-button-container">
       <button class="wide-report-button" (click)="completeReport()">
-        יאללה דווח
+        Report
       </button>
     </div>
 

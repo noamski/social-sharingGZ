@@ -1,0 +1,58 @@
+.actionBtn {
+  margin-top: 5px;
+  margin-bottom: 2px;
+  font-size: 1.2em;
+}
+.title {
+  text-align: center;
+  color: #037c6d;
+  font-family: Matka, Arial, serif;
+}
+.webcam {
+  float:left;
+  width:50%;
+  height:180px;
+}
+
+.process-info {
+  color: #037c6d;
+  font-family: Matka, Arial, serif;
+}
+/*
+.snapshot {
+  text-align: center;
+  img {
+    max-width: 800px;
+    max-height: 800px;
+  }
+}*/
+
+.snapshot {
+  text-align: center;
+  width:50%;
+  height:180px;
+  float:right;
+  img {
+    max-width: 400px;
+    max-height: 300px;
+  }
+}
+
+.finish-button{
+  -webkit-box-shadow: 6px 5px 5px 0px rgba(0,0,0,0.65);
+  -moz-box-shadow: 6px 5px 5px 0px rgba(0,0,0,0.65);
+  box-shadow: 6px 5px 5px 0px rgba(0,0,0,0.65);
+  width:300px;
+  height:40px;
+  border-radius: 25px;
+  font-family: matka, sans-serif;
+  border: none;
+  background-color: #037c6d;
+  color:white;
+  font-size: 26px;
+  outline: none;
+}
+
+ul.links {
+  padding-bottom: 20px;
+}

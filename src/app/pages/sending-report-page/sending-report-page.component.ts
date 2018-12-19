@@ -18,15 +18,15 @@ declare var $: any;
 })
 export class SendingReportPageComponent implements OnInit {
 
-  eventType:string = null;
-  eventSize:string = null;
+  eventType: string = null;
+  eventSize: string = null;
   EVENT_TYPE_BUTTON = EVENT_TYPES;
   BALLOON_HEIGHTS = BALLOON_HEIGHTS;
   KITE_HEIGHTS = KITE_HEIGHTS;
   FIRE_SIZES = FIRE_SIZES;
-  reportService:ReportService;
+  reportService: ReportService;
 
-  constructor(private route:ActivatedRoute, private reportSrv:ReportService, private router:Router, private userAgent: UserAgentService) {
+  constructor(private route: ActivatedRoute, private reportSrv: ReportService, private router: Router, private userAgent: UserAgentService) {
     this.reportService = reportSrv;
   }
 
@@ -36,29 +36,31 @@ export class SendingReportPageComponent implements OnInit {
     this.eventSize = this.reportService.getEventSize();
   }
 
-  setEventSize(eventSize){
+  setEventSize(eventSize) {
     this.eventSize = eventSize;
     this.reportService.setEventSize(eventSize);
   }
 
   cameraButtonClicked() {
     // activate camera
-    $('input').click();
+    this.router.navigate(['app-webcam-page']);
+    // Activate file choosing service
+    // $('input').click();
   }
 
-  captureImage(image){
+  captureImage(image) {
     this.reportSrv.captureImageWithoutSending(image);
   }
 
-  sendReportAndGoToEndingPage(){
+  sendReportAndGoToEndingPage() {
     this.reportSrv.upload(this.getEventDescription());
     this.reportSrv.setWhatsappSharingUrl(encodeURIComponent(this.makeUserMessage()));
-    this.router.navigate(['/ending'])
+    this.router.navigate(['/ending']);
   }
 
   makeUserMessage() {
-    let headingPart = `${this.userAgent.isiOSPhone() ? 'כיוון מצפן: \n' + parseInt(this.reportSrv.getAzimuth().toString()) : '' }`;
-    let opening = "דיווח על ";
+    const headingPart = `${this.userAgent.isiOSPhone() ? 'כיוון מצפן: \n' + parseInt(this.reportSrv.getAzimuth().toString()) : '' }`;
+    const opening = "דיווח על'";
     return `${this.getGoogleMapsURL()}\n
     ${headingPart}
     ${opening}\n
@@ -66,10 +68,10 @@ export class SendingReportPageComponent implements OnInit {
   }
 
   getGoogleMapsURL() {
-    if(this.reportSrv.currLocation) {
-      return `google.com/maps/?q=${this.reportSrv.currLocation.latitude},${this.reportSrv.currLocation.longitude}`
+    if (this.reportSrv.currLocation) {
+      return `google.com/maps/?q=${this.reportSrv.currLocation.latitude},${this.reportSrv.currLocation.longitude}`;
     } else {
-      return ''
+      return '';
     }
   }
 
@@ -81,7 +83,7 @@ export class SendingReportPageComponent implements OnInit {
     }
   }
 
-  addComment(){
+  addComment() {
     this.router.navigate(['/add-comment']);
   }
 

@@ -1,10 +1,21 @@
 <div class="ending-page-wrapper">
   <div class="ending-page-column" style="height: 28vh;">
-    <div class="ending-page-main-title">הדיווח נשלח בהצלחה</div>
-    <div class="row-with-vertical-centered-items" style="margin: auto; justify-content: space-between">
+    <div class="ending-page-main-title">...Thanks for the report we are working on it now</div>
+    <div class="row">
+      <div class="col-4"></div>
+      <div class="col-4">
+        <div class="progress" style="height: 50px; margin-top: 5%">
+          <div  id="dynamic" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+            <span id="current-progress"></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-4"></div>
+    </div>
+
+    <div class="row-with-vertical-centered-items" style="margin: auto; justify-content: space-between; margin-top: 15%">
       <button class="main-button-mini"
               (click)="reportService.sendInitialReportAndMoveToMapScreen()">
-        <h5 class="main-button-mini-text">יאללה דווח!</h5>
       </button>
       <a *ngIf="reportService.currLocation" style="width: 100px;height: 100px"
          href="https://api.whatsapp.com/send?text={{ reportService.getWhatsappSharingUrl() }}">
@@ -13,23 +24,8 @@
     </div>
 
   </div>
-  <div class="ending-page-column" style="height: 35vh;
-    justify-content: space-between;">
-    <div class="ending-page-column balloon-icon-wrapper">
-      <span class="balloon-icon-text">זה סופו של כל בלון</span>
-    </div>
-    <div class="row-with-vertical-centered-items" style="justify-content: space-evenly; flex-wrap: wrap;">
-      <div class="row-with-vertical-centered-items credit-logo" style="justify-content: space-between;width: 145px;">
+      <div class="row-with-vertical-centered-items credit-logo" style="justify-content: space-between;width: 200px; margin-right: 100px">
         <img class="unit-icon" src="/assets/OfekUnit.png"/>
-        <img class="unit-icon" src="/assets/Bamza_108.png"/>
       </div>
-      <img class="credit-logo" src="/assets/technology_for_israel.png"/>
-    </div>
-    <div class="row-with-vertical-centered-items"
-         style="justify-content: space-evenly;flex-wrap: wrap;padding-bottom:20px;">
-      <img class="credit-logo" src="/assets/scenaric-logo.png"/>
-      <img class="credit-logo" src="/assets/sayvu.png"/>
 
-    </div>
-  </div>
 </div>

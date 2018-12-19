@@ -9,6 +9,7 @@ import { layerRouter } from "./routes/layers";
 import {loginRouter} from "./routes/login";
 import { reportRouter } from "./routes/report";
 import {supportGazaStripRouter} from "./routes/support_gaza_strip";
+import {userRouter} from "./routes/user";
 
 const alonAPI = require("./routes/alon");
 
@@ -60,7 +61,7 @@ app.use((req, res, next) => {
   //     } else {
   //       // if everything is good, save to request for use in other routes
   //       req["decoded"] = decoded;
-  //       next(); 
+  //       next();
   //     }
   //   });
   // } else if (
@@ -78,6 +79,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/token", alonAPI.router);
+app.use("/api/users", userRouter);
 app.use("/api/report", reportRouter);
 app.use("/api/layers", layerRouter);
 app.use("/api/login", loginRouter);

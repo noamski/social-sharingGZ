@@ -1,10 +1,21 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css);
+.btn-facebook{color:#fff;background-color:#3b5998;border-color:rgba(0,0,0,0.2)}.btn-facebook:hover,.btn-facebook:focus,.btn-facebook:active,.btn-facebook.active,.open .dropdown-toggle.btn-facebook{color:#fff;background-color:#30487b;border-color:rgba(0,0,0,0.2)}
+.btn-facebook:active,.btn-facebook.active,.open .dropdown-toggle.btn-facebook{background-image:none}
+.btn-facebook.disabled,.btn-facebook[disabled],fieldset[disabled] .btn-facebook,.btn-facebook.disabled:hover,.btn-facebook[disabled]:hover,fieldset[disabled] .btn-facebook:hover,.btn-facebook.disabled:focus,.btn-facebook[disabled]:focus,fieldset[disabled] .btn-facebook:focus,.btn-facebook.disabled:active,.btn-facebook[disabled]:active,fieldset[disabled] .btn-facebook:active,.btn-facebook.disabled.active,.btn-facebook[disabled].active,fieldset[disabled] .btn-facebook.active{background-color:#3b5998;border-color:rgba(0,0,0,0.2)}
 
-.header {
+.header-text {
+  justify-content: center;
+  flex-direction: column-reverse;
+  display: flex;
+  cursor: pointer;
+  text-align: center;
   width: 100%;
   box-shadow: 0 0 10px grey;
   height: 50px;
 }
-
+.header-text:hover {
+  background: rgba(59, 89, 152, .1);
+}
 input {
   display: block;
   visibility: hidden;
@@ -68,6 +79,19 @@ input {
   cursor: pointer;
   background: transparent no-repeat;
   outline: none;
+}
+
+.login-facebook-text {
+  color: #3b5998;
+  font-family: HelveticaNeueW01-55Roma, HelveticaNeueW02-55Roma, HelveticaNeueW10-55Roma, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 46px;
+  text-align: center;
+  width: 239px;
+  height: 46px;
+  padding-left: 58px;
+  border: 1px solid #3b5998;
 }
 
 .fire-fighters-button{
