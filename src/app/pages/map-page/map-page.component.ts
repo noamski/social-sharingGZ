@@ -253,4 +253,12 @@ export class MapPageComponent implements OnInit {
     this.router.navigate([`/sending-report/${this.eventType}`])
   }
 
+
+  testLon() {
+    return "34.860890"
+  }
+
+  testLat() {
+    return "32.102414"
+  }
 }
