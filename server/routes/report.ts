@@ -24,7 +24,7 @@ reportRouter.post("/", (req: Request, res: Response) => {
     let token, userID, serverReportsURL;
     sendToDrones(req.body.lat, req.body.lng, req.body.name);
 
-    // if (req.body.lat && req.body.lng && isInPolygon([req.body.lat, req.body.lng])) {
+    // if (req.body.lat && req.body.lon && isInPolygon([req.body.lat, req.body.lon])) {
     let phoneNumber;
     if (req.body.userToken) {
       phoneNumber = (_.invert(alonAPI.tokens))[req.body.userToken] || "XXX-XXXXXXX";

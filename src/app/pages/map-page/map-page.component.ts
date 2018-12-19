@@ -25,6 +25,8 @@ declare var google: any;
 
 export class MapPageComponent implements OnInit {
 
+  coords = [{lat: 32.106103, lon: 34.868658},
+    {lat: 32.106012, lon: 34.860558}];
   currentLocation: Location = new Location(null, null);
   mapLocation: Location = new Location(null, null);
   zoom: number = 14;
@@ -118,7 +120,7 @@ export class MapPageComponent implements OnInit {
   }
 
   mapClicked($event: MouseEvent) {
-    // this.setSelectedLocation($event['coords']['lat'], $event['coords']['lng']);
+    // this.setSelectedLocation($event['coords']['lat'], $event['coords']['lon']);
     this.getClosestPolitical();
   }
 
@@ -250,8 +252,10 @@ export class MapPageComponent implements OnInit {
     }
   }
 
-  getPoliceStationsCoords(): Coord[] {
-    return [{lat: "32.106103", lon: "34.868658"},
-      {lat: "32.106012", lon: "34.860558"}];
+  foo() {
+    let h = [{lat: 32.106103, lon: 34.868658},
+      {lat: 32.106012, lon: 34.860558}];
+    return this.coords;
   }
 }
+

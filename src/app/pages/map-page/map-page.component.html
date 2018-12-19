@@ -6,24 +6,17 @@
            [usePanning]="true"
            (mapClick)="mapClicked($event)">
 
+    <agm-marker *ngFor="let station of foo()"
+                [latitude]="station.lat" [longitude]="station.lon">
+    </agm-marker>
+
     <agm-marker
       [latitude]="currentLocationMarker.latitude"
       [longitude]="currentLocationMarker.longitude"
       [iconUrl]="currentLocationMarker.iconUrl">
+      <agm-info-window>Hello world</agm-info-window>
     </agm-marker>
-    <agm-marker
-      [latitude]="selectedLocationMarker.latitude"
-      [longitude]="selectedLocationMarker.longitude"
-      [iconUrl]="getMarkerIconByEventType()"
-      (markerClick)="markerClicked($event)">
-    </agm-marker>
-    <agm-marker
-      *ngFor="let m of markers; let i = index"
-      [latitude]="m.latitude" [longitude]="m.longitude" [iconUrl]="m.iconUrl">
-      <agm-info-window>
-        <marker-description [marker]="m"></marker-description>
-      </agm-info-window>
-    </agm-marker>
+
     <core-map-content (onMapLoad)="loadAPIWrapper($event)"></core-map-content>
   </agm-map>
 
