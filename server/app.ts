@@ -90,7 +90,7 @@ app.use("/api/supportcitizens", supportGazaStripRouter);
 
 
 // new routes
-app.use("/police/station", stationRoute);
+app.use("/police/", stationRoute);
 
 const polygonFilter = require("./utils/polygonFilter");
 console.log("started");

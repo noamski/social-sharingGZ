@@ -13,7 +13,8 @@ import { Subscription } from 'rxjs/internal/Subscription';
 import { Location } from '../../models/Location';
 import { ROLES } from '../../constants/ROLES';
 import { Report } from '../../models/Report';
-import { Coord } from '../../types';
+import { Station } from '../../types';
+import { ParkingServerService } from '../../../services/parking-server.service';
 
 declare var google: any;
 
@@ -53,10 +54,12 @@ export class MapPageComponent implements OnInit {
               private httpClient: HttpClient,
               private wrapper: GoogleMapsAPIWrapper,
               private el: ElementRef,
-              private reportService: ReportService) {
+              private reportService: ReportService,
+              private stationService: ParkingServerService) {
   }
 
   ngOnInit() {
+    this.stations();
     this.changeEventType(this.EVENT_TYPE_BUTTON.FIRE);
     this.currentLocationSubscription = this.reportService.currentLocationObservable
       .subscribe((location: Location) => {
@@ -251,10 +254,12 @@ export class MapPageComponent implements OnInit {
     }
   }
 
-  coords: Coord[] = [{lat: 32.106103, lon: 34.868658, name: "מחוז מרכז"},
-    {lat: 32.106012, lon: 34.860558, name: "מחוז צפון"}];
+
+  coords: Station[] = [];
   stations() {
-    return this.coords;
+     this.stationService.allStations().subscribe(data => {
+      this.coords = data;
+    });
   }
 }
 

@@ -3,11 +3,12 @@ import { ParkingData } from '../models/ParkingData';
 
 const stationRoute: Router = Router();
 
-stationRoute.get('/data', async (req: Request, res: Response) => {
-  res.send("hello world")
-})
+stationRoute.get('/getStations', async (req: Request, res: Response) => {
+  res.send([{lat: 32.106103, lon: 34.868658, name: 'מחוז מרכז'},
+    {lat: 32.106012, lon: 34.860558, name: 'מחוז צפון'}] as Station[]);
+});
 
-stationRoute.post('/data', async (req: Request, res: Response) => {
+stationRoute.post('/station/updateData', async (req: Request, res: Response) => {
   const {parkingDescription, wantToShare, stationCoords, policeCarCoords} = req.body;
 
   if (!parkingDescription || !policeCarCoords || !stationCoords || wantToShare === undefined) {
@@ -27,6 +28,11 @@ stationRoute.post('/data', async (req: Request, res: Response) => {
   res.status(200).send(data);
 });
 
+export interface Station {
+  lat: number;
+  lon: number;
+  name?: string;
+}
 
 
 export { stationRoute };

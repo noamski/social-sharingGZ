@@ -6,13 +6,22 @@
            [usePanning]="true"
            (mapClick)="mapClicked($event)">
 
-    <agm-marker *ngFor="let station of stations()"
-                [latitude]="station.lat" [longitude]="station.lon">
+    <agm-marker *ngFor="let station of coords" [latitude]="station.lat" [longitude]="station.lon" [iconUrl]="currentLocationMarker.iconUrl">
       <agm-info-window>
-        <strong>{{station.name}}</strong>
+
+        <div dir="rtl">
+          <h4>{{station.name}}</h4>
+          <br/>
+          המערכת מחפשת חניה עבורך
+          <br /> אנשים שמאפשרים שיתוף חנייה מקבלים עדיפות בבחירת החנייה
+          <br />
+          <div style="float:left">
+            <button type="button" class="btn btn-primary">כן</button>
+            <button type="button" class="btn">לא</button>
+          </div>
+        </div>
       </agm-info-window>
     </agm-marker>
-
     <agm-marker
       [latitude]="currentLocationMarker.latitude"
       [longitude]="currentLocationMarker.longitude"

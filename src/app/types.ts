@@ -1,13 +1,12 @@
-export interface Coord {
+export interface Station {
   lat: number;
   lon: number;
-  description?: string;
   name?: string;
 }
 
 export interface ParkingData {
   wantToShare: boolean;
-  policeCarCoords: Coord;
-  stationCoords: Coord;
+  policeCarCoords: Station;
+  stationCoords: Station;
   parkingDescription: string;
 }
