@@ -18,4 +18,9 @@ export class ParkingServerService {
   allStations(): Observable<any> {
     return this.httpClient.get(environment.config.serverBaseURL[1] + '/police/getStations');
   }
+
+  foundAvailableParking(facebookId: string, stationCoord: Station): Observable<any>{
+    return this.httpClient.get(environment.config.serverBaseURL[1] + '/police/availableParking',
+      {facebookId, stationCoord});
+  }
 }

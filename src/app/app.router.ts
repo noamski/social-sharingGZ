@@ -14,7 +14,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { AuthGuardService as AuthGuard } from '../services/auth-guard.service';
 import { AddCommentComponent } from './pages/add-comment/add-comment.component';
 const routes: Routes = [
-  { path: 'home', component: MapPageComponent},
+  { path: 'home', component: HomePageComponent},
   { path: 'capture', component: CapturePageComponent },
   { path: 'comment', component: CommentPageComponent },
   { path: 'sending-report/:event-type', component: SendingReportPageComponent},

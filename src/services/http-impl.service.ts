@@ -9,8 +9,8 @@ export class HttpImplService {
 
   constructor(private httpClient: HttpClient) { }
 
-  get(url: string): Observable<any> {
-    return this.httpClient.get(url);
+  get(url: string, params: any = {}): Observable<any> {
+    return this.httpClient.get(url, params);
   }
 
   post(url: string, body: any) {

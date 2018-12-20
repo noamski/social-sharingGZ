@@ -4,8 +4,16 @@ import { ParkingData } from '../models/ParkingData';
 const stationRoute: Router = Router();
 
 stationRoute.get('/getStations', async (req: Request, res: Response) => {
-  res.send([{lat: 32.106103, lon: 34.868658, name: 'מחוז מרכז'},
-    {lat: 32.106012, lon: 34.860558, name: 'מחוז צפון'}] as Station[]);
+  res.send([{lat: 32.107881, lon: 34.836171, name: 'תחנת משטרה ירקון'},
+    {lat: 32.090075, lon: 34.775210, name: 'תחנת משטרה דיזינגוף תל אביב'},
+    {lat: 32.093739, lon: 34.830863, name: 'משטרת בני ברק'}] as Station[]);
+});
+
+stationRoute.get('/availableParking', async (req: Request, res: Response) => {
+  const {facebookId, stationCoord} = req.body;
+
+  console.log("daniel taub");
+  res.send({parkingData: "A5"}).status(200);
 });
 
 stationRoute.post('/station/updateData', async (req: Request, res: Response) => {

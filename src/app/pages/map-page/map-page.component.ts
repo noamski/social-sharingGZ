@@ -26,7 +26,6 @@ declare var google: any;
 
 export class MapPageComponent implements OnInit {
 
-  foundPark: boolean;
   currentLocation: Location = new Location(null, null);
   mapLocation: Location = new Location(null, null);
   zoom: number = 14;
@@ -90,7 +89,7 @@ export class MapPageComponent implements OnInit {
     });
 
     users.forEach((user) => {
-      let iconUrl = this.getIconUrlByRole(user.role);
+       let iconUrl;// = this.getIconUrlByRole(user.role);
 
       if (!isNullOrUndefined(iconUrl)) {
         this.addNewRoleMarker(user, iconUrl);
@@ -105,7 +104,7 @@ export class MapPageComponent implements OnInit {
 
   initializeCurrentLocation(location: Location) {
     this.currentLocation = location;
-    this.currentLocationMarker = addMarkerWithIcon(this.currentLocation.latitude, this.currentLocation.longitude, 'assets/circle-16.png');
+    this.currentLocationMarker = addMarkerWithIcon(this.currentLocation.latitude, this.currentLocation.longitude, 'assets/icons/patrol-icon.png');
     if (!this.isSelectedLocationValid()) {
       this.setSelectedLongitude(this.currentLocation.longitude.toString());
       this.setSelectedLatitude(this.currentLocation.latitude.toString());
@@ -237,10 +236,10 @@ export class MapPageComponent implements OnInit {
   }
 
   private addNewRoleMarker(user, iconUrl) {
-    let marker = addMarkerWithIcon(user.lat, user.lng, iconUrl);
-    marker.markerType = 'troop';
-    marker.content = user;
-    this.markers.push(marker);
+    // let marker = addMarkerWithIcon(user.lat, user.lng, iconUrl);
+    // marker.markerType = 'troop';
+    // marker.content = user;
+    // this.markers.push(marker);
   }
 
   private getIconUrlByRole(role) {
@@ -260,6 +259,17 @@ export class MapPageComponent implements OnInit {
      this.stationService.allStations().subscribe(data => {
       this.coords = data;
     });
+  }
+
+  isFoundPark: boolean;
+  parkData: string = '';
+  policeUrl = 'assets/icons/police.png';
+  foundPark(parkVal: boolean, station: Station) {
+    this.stationService.foundAvailableParking("user name", station)
+      .subscribe(x => {
+        this.parkData = x.parkingData;
+        this.isFoundPark = parkVal;
+      });
   }
 }
 
