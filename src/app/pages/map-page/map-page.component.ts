@@ -25,8 +25,7 @@ declare var google: any;
 
 export class MapPageComponent implements OnInit {
 
-  coords = [{lat: 32.106103, lon: 34.868658},
-    {lat: 32.106012, lon: 34.860558}];
+
   currentLocation: Location = new Location(null, null);
   mapLocation: Location = new Location(null, null);
   zoom: number = 14;
@@ -252,9 +251,9 @@ export class MapPageComponent implements OnInit {
     }
   }
 
-  foo() {
-    let h = [{lat: 32.106103, lon: 34.868658},
-      {lat: 32.106012, lon: 34.860558}];
+  coords: Coord[] = [{lat: 32.106103, lon: 34.868658, name: "מחוז מרכז"},
+    {lat: 32.106012, lon: 34.860558, name: "מחוז צפון"}];
+  stations() {
     return this.coords;
   }
 }

@@ -6,8 +6,11 @@
            [usePanning]="true"
            (mapClick)="mapClicked($event)">
 
-    <agm-marker *ngFor="let station of foo()"
+    <agm-marker *ngFor="let station of stations()"
                 [latitude]="station.lat" [longitude]="station.lon">
+      <agm-info-window>
+        <strong>{{station.name}}</strong>
+      </agm-info-window>
     </agm-marker>
 
     <agm-marker

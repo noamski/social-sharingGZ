@@ -3,6 +3,10 @@ import { ParkingData } from '../models/ParkingData';
 
 const stationRoute: Router = Router();
 
+stationRoute.get('/data', async (req: Request, res: Response) => {
+  res.send("hello world")
+})
+
 stationRoute.post('/data', async (req: Request, res: Response) => {
   const {parkingDescription, wantToShare, stationCoords, policeCarCoords} = req.body;
 
@@ -22,6 +26,7 @@ stationRoute.post('/data', async (req: Request, res: Response) => {
 
   res.status(200).send(data);
 });
+
 
 
 export { stationRoute };

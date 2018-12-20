@@ -1,6 +1,8 @@
 export interface Coord {
   lat: number;
   lon: number;
+  description?: string;
+  name?: string;
 }
 
 export interface ParkingData {
