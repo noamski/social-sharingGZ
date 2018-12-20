@@ -1,5 +1,4 @@
 import {mongoose} from "../dal/connection";
-import { Schema } from 'mongoose';
 
 const parkingSchema = new mongoose.Schema({
   wantToShare: Boolean,
@@ -10,7 +9,8 @@ const parkingSchema = new mongoose.Schema({
   stationCoords: {
     lat: Number,
     lon: Number
-  }
+  },
+  parkingDescription: String
 
 });
 const ParkingData = mongoose.model("parkings", parkingSchema);

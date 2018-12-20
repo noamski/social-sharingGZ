@@ -1,14 +1,12 @@
-import { NextFunction, Request, Response, Router } from 'express';
-import { ParkingData, parkingSchema } from '../models/ParkingData';
+import { Request, Response, Router } from 'express';
+import { ParkingData } from '../models/ParkingData';
 
 const stationRoute: Router = Router();
 
 stationRoute.post('/data', async (req: Request, res: Response) => {
-  let policeCarCoords = req.body.policeCarCoords;
-  let stationCoords = req.body.stationCoords;
-  let wantToShare = req.body.wantToShare;
+  const {parkingDescription, wantToShare, stationCoords, policeCarCoords} = req.body;
 
-  if (!policeCarCoords || !stationCoords || wantToShare === undefined) {
+  if (!parkingDescription || !policeCarCoords || !stationCoords || wantToShare === undefined) {
     res.status(400).send('didnt send all the needed data');
     return;
   }
@@ -18,7 +16,8 @@ stationRoute.post('/data', async (req: Request, res: Response) => {
   await ParkingData.create({
     wantToShare: wantToShare,
     policeCarCoords: policeCarCoords,
-    stationCoords: stationCoords
+    stationCoords: stationCoords,
+    parkingDescription: parkingDescription
   }).then(x => data = x);
 
   res.status(200).send(data);

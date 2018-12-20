@@ -4,7 +4,8 @@ export interface Coord {
 }
 
 export interface ParkingData {
-  wantToShare: boolean,
-  policeCarCoords: Coord,
-  stationCoords: Coord
+  wantToShare: boolean;
+  policeCarCoords: Coord;
+  stationCoords: Coord;
+  parkingDescription: string;
 }
