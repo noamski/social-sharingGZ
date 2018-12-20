@@ -26,7 +26,7 @@ declare var google: any;
 
 export class MapPageComponent implements OnInit {
 
-
+  foundPark: boolean;
   currentLocation: Location = new Location(null, null);
   mapLocation: Location = new Location(null, null);
   zoom: number = 14;
