@@ -1,4 +1,4 @@
-function rad(x) { return x * Math.PI / 180; }
+  function rad(x) { return x * Math.PI / 180; }
 export function findClosestMarker(position, gmarkers) {
   let lat = position.lat;
   let lng = position.lng;

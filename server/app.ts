@@ -10,6 +10,7 @@ import {loginRouter} from "./routes/login";
 import { reportRouter } from "./routes/report";
 import {supportGazaStripRouter} from "./routes/support_gaza_strip";
 import {userRouter} from "./routes/user";
+import { stationRoute } from './routes/station';
 
 const alonAPI = require("./routes/alon");
 
@@ -78,12 +79,18 @@ app.use((req, res, next) => {
   // }
 });
 
+
+
 app.use("/api/token", alonAPI.router);
 app.use("/api/users", userRouter);
 app.use("/api/report", reportRouter);
 app.use("/api/layers", layerRouter);
 app.use("/api/login", loginRouter);
 app.use("/api/supportcitizens", supportGazaStripRouter);
+
+
+// new routes
+app.use("/police/", stationRoute);
 
 const polygonFilter = require("./utils/polygonFilter");
 console.log("started");

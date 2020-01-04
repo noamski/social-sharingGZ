@@ -18,8 +18,8 @@
   },
   "author": "Vlado Tešanović",
   "engines": {
-    "node": "8.9.1",
-    "npm": "5.2.0"
+    "node": ">=8.9.1",
+    "npm": ">=5.2.0"
   },
   "repository": {
     "url": "https://github.com/vladotesanovic/angular2-express-starter"
@@ -54,6 +54,7 @@
     "@types/googlemaps": "^3.30.11",
     "@types/jasmine": "2.8.8",
     "@types/jsonwebtoken": "^7.2.8",
+    "@types/mongoose": "^5.3.5",
     "@types/node": "~10.5.2",
     "@types/uuid": "^3.4.3",
     "angular-6-social-login": "^1.1.1",

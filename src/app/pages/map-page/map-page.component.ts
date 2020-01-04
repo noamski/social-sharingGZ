@@ -1,18 +1,20 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {LayersService} from '../../../services/layers.service';
-import {addMarkerWithIcon, Marker} from '../../models/Marker';
-import {isNullOrUndefined} from 'util';
-import {ReportService} from '../../../services/report.service';
+import { Component, ElementRef, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { LayersService } from '../../../services/layers.service';
+import { addMarkerWithIcon, Marker } from '../../models/Marker';
+import { isNullOrUndefined } from 'util';
+import { ReportService } from '../../../services/report.service';
 import {} from '@types/googlemaps';
-import {HttpClient} from '@angular/common/http';
-import {GoogleMapsAPIWrapper, LatLngLiteral} from '@agm/core';
-import {findClosestMarker} from './findClosestPlace';
-import {EVENT_TYPES} from '../../constants/EVENT_TYPES';
-import {Subscription} from 'rxjs/internal/Subscription';
-import {Location} from '../../models/Location';
-import {ROLES} from '../../constants/ROLES';
-import {Report} from '../../models/Report';
+import { HttpClient } from '@angular/common/http';
+import { GoogleMapsAPIWrapper, LatLngLiteral } from '@agm/core';
+import { findClosestMarker } from './findClosestPlace';
+import { EVENT_TYPES } from '../../constants/EVENT_TYPES';
+import { Subscription } from 'rxjs/internal/Subscription';
+import { Location } from '../../models/Location';
+import { ROLES } from '../../constants/ROLES';
+import { Report } from '../../models/Report';
+import { Station } from '../../types';
+import { ParkingServerService } from '../../../services/parking-server.service';
 
 declare var google: any;
 
@@ -24,22 +26,26 @@ declare var google: any;
 
 export class MapPageComponent implements OnInit {
 
-  currentLocation: Location = new Location (null,null);
-  mapLocation: Location = new Location (null,null);
+  currentLocation: Location = new Location(null, null);
+  mapLocation: Location = new Location(null, null);
   zoom: number = 14;
   markers: Marker[] = [];
   currentLocationMarker: Marker = new Marker();
   selectedLocationMarker: Marker = new Marker();
   mapTypeId: string = 'roadmap';
-  locationName:string;
-  currentLocationSubscription:Subscription;
-  event:Location = new Location(null,null);
+  locationName: string;
+  currentLocationSubscription: Subscription;
+  event: Location = new Location(null, null);
   map: any;
   reports: Report[] = [new Report(32.0001, 32.333, 'bug'), new Report(32.0045, 32.333, 'mashroom'), new Report(32.0001, 32.553, 'virus'), new Report(32.0551, 32.333, 'bug')];
 
   EVENT_TYPE_BUTTON = EVENT_TYPES;
 
   eventType = null;
+  public markerClicked = (markerObj) => {
+    const position = new google.maps.LatLng(this.selectedLocationMarker.latitude, this.selectedLocationMarker.longitude);
+    this.map.panTo(position);
+  };
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -47,13 +53,15 @@ export class MapPageComponent implements OnInit {
               private httpClient: HttpClient,
               private wrapper: GoogleMapsAPIWrapper,
               private el: ElementRef,
-  private reportService: ReportService) {
+              private reportService: ReportService,
+              private stationService: ParkingServerService) {
   }
 
   ngOnInit() {
+    this.stations();
     this.changeEventType(this.EVENT_TYPE_BUTTON.FIRE);
     this.currentLocationSubscription = this.reportService.currentLocationObservable
-      .subscribe((location:Location)=>{
+      .subscribe((location: Location) => {
         if (!this.isCurrentLocationMarkerInitialized() && !isNullOrUndefined(location)) {
           this.initializeCurrentLocation(location);
         }
@@ -81,30 +89,12 @@ export class MapPageComponent implements OnInit {
     });
 
     users.forEach((user) => {
-      let iconUrl = this.getIconUrlByRole(user.role);
+       let iconUrl;// = this.getIconUrlByRole(user.role);
 
-      if(!isNullOrUndefined(iconUrl)){
+      if (!isNullOrUndefined(iconUrl)) {
         this.addNewRoleMarker(user, iconUrl);
       }
     });
-  }
-
-  private addNewRoleMarker(user, iconUrl) {
-    let marker = addMarkerWithIcon(user.lat, user.lng, iconUrl);
-    marker.markerType = 'troop';
-    marker.content = user;
-    this.markers.push(marker);
-  }
-
-  private getIconUrlByRole(role) {
-    switch (role) {
-      case ROLES.FIRETRUCK:
-        return 'assets/new-design-icons/fire-truck-savyu.png';
-      case ROLES.PATROL:
-        return 'assets/new-design-icons/patrolman-savyu.png';
-      default:
-        return null;
-    }
   }
 
   goToCurrentLocation() {
@@ -114,7 +104,7 @@ export class MapPageComponent implements OnInit {
 
   initializeCurrentLocation(location: Location) {
     this.currentLocation = location;
-    this.currentLocationMarker = addMarkerWithIcon(this.currentLocation.latitude, this.currentLocation.longitude, 'assets/circle-16.png');
+    this.currentLocationMarker = addMarkerWithIcon(this.currentLocation.latitude, this.currentLocation.longitude, 'assets/icons/patrol-icon.png');
     if (!this.isSelectedLocationValid()) {
       this.setSelectedLongitude(this.currentLocation.longitude.toString());
       this.setSelectedLatitude(this.currentLocation.latitude.toString());
@@ -131,11 +121,9 @@ export class MapPageComponent implements OnInit {
   }
 
   mapClicked($event: MouseEvent) {
-    // this.setSelectedLocation($event['coords']['lat'], $event['coords']['lng']);
+    // this.setSelectedLocation($event['coords']['lat'], $event['coords']['lon']);
     this.getClosestPolitical();
   }
-
-
 
   isSelectedLocationValid() {
     return !isNullOrUndefined(this.selectedLocationMarker.latitude) && !isNullOrUndefined(this.selectedLocationMarker.longitude);
@@ -169,15 +157,9 @@ export class MapPageComponent implements OnInit {
     this.currentLocation.longitude = this.selectedLocationMarker.longitude;
   }
 
-
   public loadAPIWrapper(map) {
     this.map = map;
   }
-
-  public markerClicked = (markerObj) => {
-    const position = new google.maps.LatLng(this.selectedLocationMarker.latitude, this.selectedLocationMarker.longitude);
-    this.map.panTo(position);
-  };
 
   getClosestPolitical() {
     const request = {
@@ -198,7 +180,7 @@ export class MapPageComponent implements OnInit {
     });
   }
 
-  getClosestRoad(){
+  getClosestRoad() {
     const roadRequest = {
       location: {lat: this.selectedLocationMarker.latitude, lng: this.selectedLocationMarker.longitude},
       radius: 5000,
@@ -210,10 +192,10 @@ export class MapPageComponent implements OnInit {
     service.nearbySearch(roadRequest, (results, status) => {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
         const road = this.filterClosestRoad(results);
-        this.locationName = "כביש " + road.name;
+        this.locationName = 'כביש ' + road.name;
       }
       if (status == google.maps.places.PlacesServiceStatus.ZERO_RESULTS) {
-        this.locationName = "מיקום ללא שם";
+        this.locationName = 'מיקום ללא שם';
       }
     });
   }
@@ -245,12 +227,49 @@ export class MapPageComponent implements OnInit {
     // }
   }
 
-  isReportValid(){
+  isReportValid() {
     return this.isSelectedLocationValid() && this.eventType !== null;
   }
 
-  completeReport(){
-    this.router.navigate([`/sending-report/${this.eventType}`])
+  completeReport() {
+    this.router.navigate([`/sending-report/${this.eventType}`]);
   }
 
+  private addNewRoleMarker(user, iconUrl) {
+    // let marker = addMarkerWithIcon(user.lat, user.lng, iconUrl);
+    // marker.markerType = 'troop';
+    // marker.content = user;
+    // this.markers.push(marker);
+  }
+
+  private getIconUrlByRole(role) {
+    switch (role) {
+      case ROLES.FIRETRUCK:
+        return 'assets/new-design-icons/fire-truck-savyu.png';
+      case ROLES.PATROL:
+        return 'assets/new-design-icons/patrolman-savyu.png';
+      default:
+        return null;
+    }
+  }
+
+
+  coords: Station[] = [];
+  stations() {
+     this.stationService.allStations().subscribe(data => {
+      this.coords = data;
+    });
+  }
+
+  isFoundPark: boolean;
+  parkData: string = '';
+  policeUrl = 'assets/icons/police.png';
+  foundPark(parkVal: boolean, station: Station) {
+    this.stationService.foundAvailableParking("user name", station)
+      .subscribe(x => {
+        this.parkData = x.parkingData;
+        this.isFoundPark = parkVal;
+      });
+  }
 }
+

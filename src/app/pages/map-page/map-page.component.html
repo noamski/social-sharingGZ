@@ -1,49 +1,72 @@
 <div class="map-page">
-  <div class="header row-with-vertical-centered-items">
-
-    <button class="kite" style="outline: none;" (click)="changeEventType(EVENT_TYPE_BUTTON.KITE)"
-            [ngClass]="eventType === EVENT_TYPE_BUTTON.KITE?'kite-checked':'kite'"></button>
-    <button class="fire" style="outline: none;" (click)="changeEventType(EVENT_TYPE_BUTTON.FIRE)"
-            [ngClass]="eventType === EVENT_TYPE_BUTTON.FIRE?'fire-checked':'fire'"></button>
-    <button class="balloon" style="outline: none;" (click)="changeEventType(EVENT_TYPE_BUTTON.BALLOON)"
-            [ngClass]="eventType === EVENT_TYPE_BUTTON.BALLOON?'balloon-checked':'balloon'"></button>
-    <div style="margin-left: 10%"><h3>:Filter by</h3></div>
-  </div>
+  <nav id="top" class="navbar navbar-expand-lg  navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Poli Park</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#!settings">הגדרות</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.waze.com/livemap?ll=31.252973%2C34.791462&navigate=yes&zoom=17">נווט לתחנת הבית</a>
+        </li>
+        <li class="nav-item">
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+          <label class="form-check-label" for="defaultCheck1">
+            Share Car . x
+          </label>
+        </li>
+      </ul>
+    </div>
+  </nav>
   <agm-map [latitude]="currentLocation.latitude" [longitude]="currentLocation.longitude" [zoom]="zoom"
            [zoomControl]="false"
            gestureHandling="greedy"
            [mapTypeId]="mapTypeId"
            [usePanning]="true"
            (mapClick)="mapClicked($event)">
+
+    <agm-marker *ngFor="let station of coords" [latitude]="station.lat" [longitude]="station.lon" >
+      <agm-info-window>
+        <div *ngIf="!isFoundPark">
+          <h4>{{station.name}}</h4>
+          <br/>
+          אנו נחפש חניה עבורך
+          <br>
+          <br> האם תרצה לשתף את כלי הרכב במהלך השהות בחנייה?
+          <br>
+          <br>
+          <div style="float:left">
+              <button class="btn btn-primary" (click)="foundPark(true, station)">כן</button>
+              <button class="btn btn-dark" (click)="foundPark(true, station)">לא</button>
+          </div>
+        </div>
+
+        <div dir="rtl" *ngIf="isFoundPark">
+          <br />
+           החנייה שנבחרה עבורך היא : {{  parkData  }}
+          <br/>
+          <br/>
+          <div style="float:left">
+            <button type="button" class="btn btn-success" onclick="location.href='https://www.waze.com/livemap?ll=31.252973%2C34.791462&navigate=yes&zoom=17';">נווט</button>
+          </div>
+        </div>
+      </agm-info-window>
+    </agm-marker>
+
     <agm-marker
       [latitude]="currentLocationMarker.latitude"
       [longitude]="currentLocationMarker.longitude"
       [iconUrl]="currentLocationMarker.iconUrl">
+      <agm-info-window>מיקומך הנוכחי</agm-info-window>
     </agm-marker>
-    <agm-marker
-      [latitude]="selectedLocationMarker.latitude"
-      [longitude]="selectedLocationMarker.longitude"
-      [iconUrl]="getMarkerIconByEventType()"
-      (markerClick)="markerClicked($event)">
-    </agm-marker>
-    <agm-marker
-      *ngFor="let m of markers; let i = index"
-      [latitude]="m.latitude" [longitude]="m.longitude" [iconUrl]="m.iconUrl">
-      <agm-info-window>
-        <marker-description [marker]="m"></marker-description>
-      </agm-info-window>
-    </agm-marker>
+
     <core-map-content (onMapLoad)="loadAPIWrapper($event)"></core-map-content>
   </agm-map>
 
   <img (click)="goToCurrentLocation()" class="location-button" src="/assets/new-design-assets/gps-button.png"/>
-  <div class="footer">
-    <div class="location-text">{{locationName}}</div>
-    <div class="row-with-vertical-centered-items wide-report-button-container">
-      <button class="wide-report-button" (click)="completeReport()">
-        Report
-      </button>
-    </div>
 
-  </div>
 </div>

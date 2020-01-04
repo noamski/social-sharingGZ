@@ -16,7 +16,7 @@ var kmlparser = (kmlPath) => {
         //enter x,y to arr
         coordinate = array[i].split(",").map(Number)
         
-        //swap lat,lng in array
+        //swap lat,lon in array
         var temp = coordinate[0];                                           
 
         coordinate[0] = coordinate[1]
