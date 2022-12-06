@@ -80,7 +80,7 @@
     "normalize.css": "^8.0.0",
     "path": "^0.12.7",
     "performance-now": "^2.1.0",
-    "qs": "^6.5.2",
+    "qs": "^6.6.1",
     "request": "^2.87.0",
     "rxjs": "^6.2.2",
     "ts-helpers": "^1.1.2",
